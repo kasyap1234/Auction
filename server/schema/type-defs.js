@@ -53,21 +53,11 @@ input FountainPenInput{
 type Mutation{
 
     createPainting(
-        title: String!
-        description: String!
-        startingPrice: Int!
-        currentPrice: Int!
-        image: String!
+       input: PaintingInput!
+
     ):Painting!
     createFountainPen(
-        brand: String!
-        model: String!
-        description: String!
-        price: Int!
-        nibSize: String!
-        startingPrice: Int!
-        currentPrice: Int!
-        image: String!
+        input: FountainPenInput!
         ): FountainPen!
         updatePainting(
         input: PaintingInput!
@@ -75,8 +65,6 @@ type Mutation{
         updateFountainPen(input: FountainPenInput!): FountainPen!
         placeBid(id: ID!, bid: Int!): Boolean!
         endAuction(id: ID!): Boolean!
-
-
 
 }
 `

@@ -5,6 +5,11 @@ const resolverss={
         painting: (parent,{id}) => PaintingList.find((painting)=> painting.id===id), 
         fountainPens : ()=> FountainPens, 
         fountainPen : (parent,{id}) => FountainPens.find((pen) => pen.id===id)
+    }, 
+
+    Mutation: {
+        createPainting: (parent,)
+
     }
 }
 
