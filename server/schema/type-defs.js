@@ -7,6 +7,9 @@ type Painting{
     startingPrice: Int!
     currentPrice: Int!
     image:String!
+    status: String!
+    
+
 
 }
 type FountainPen{
@@ -19,6 +22,7 @@ type FountainPen{
     startingPrice: Int!
     currentPrice: Int!
     image: String!
+    status: String! 
 
 }
 
