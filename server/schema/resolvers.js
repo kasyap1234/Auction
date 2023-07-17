@@ -1,5 +1,5 @@
 const {PaintingList,FountainPens}=require("../data.js"); 
-const resolverss={
+const resolvers={
     Query:{
         paintings: () => PaintingList, 
         painting: (parent,{id}) => PaintingList.find((painting)=> painting.id===id), 
@@ -56,13 +56,17 @@ const resolverss={
         }, 
         endAuction : (parent,{id})=> {
             const item=[...PaintingList,...FountainPens].find((item)=> item.id===id);
-            if(item)
-            
+            if(item){
+                item.status="CLOSED";
+                return true; 
+            }
+            return false; 
 
 
-    }
-}
+    }, 
+}, 
+}; 
+module.exports={resolvers};
 
-}
-module.exports={resolvers}; 
+
 
