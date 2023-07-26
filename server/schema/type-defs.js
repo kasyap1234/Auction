@@ -1,5 +1,5 @@
 const {gql} = require('apollo-server-express');
-const typeDefs=ggl`
+const typeDefs=gql`
 type Painting{
     id:ID!
     title:String!
