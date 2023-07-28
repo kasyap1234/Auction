@@ -1,4 +1,10 @@
 const {PaintingList,FountainPens}=require("../data.js"); 
+const isAuctionInactive = (product) => {
+    const inactiveTimeThreshold = 3600;
+    const currentTime = Math.floor(Date.now() / 1000); 
+    const lastBidTime = product.lastBidTime || product.startTime; 
+    return currentTime - lastBidTime > inactiveTimeThreshold;
+  };
 const resolvers={
     Query:{
         paintings: () => PaintingList, 
@@ -54,16 +60,25 @@ const resolvers={
                 return false; 
             }
         }, 
-        endAuction : (parent,{id})=> {
-            const item=[...PaintingList,...FountainPens].find((item)=> item.id===id);
-            if(item){
-                item.status="CLOSED";
-                return true; 
-            }
-            return false; 
-
-
-    }, 
+        
+            // ... (other mutations)
+        
+            endAuction: (parent, { id }) => {
+              const item = [...PaintingList, ...FountainPens].find((item) => item.id === id);
+        
+              if (item) {
+                // Check if the auction has been inactive for the specified time threshold
+                if (isAuctionInactive(item)) {
+                  item.status = "CLOSED";
+                  return true;
+                } else {
+                  return false; // Auction cannot be closed, as it's still active
+                }
+              }
+        
+              return false; // Product not found
+            },
+         
 }, 
 }; 
 module.exports={resolvers};
