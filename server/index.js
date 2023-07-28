@@ -2,6 +2,7 @@ const express = require("express");
 const {ApolloServer,gql}=require("apollo-server-express");
 const {typeDefs}=require("./schema/type-defs");
 const {resolvers}=require("./schema/resolvers");
+const db=require("./db");
 
 
 
