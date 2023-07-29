@@ -8,8 +8,6 @@ const paintingSchema = new Schema({
     currentPrice: Number,
     image: String,
     status: String,
-
-
 })
 const FountainPenSchema = new Schema({
     id: String,
